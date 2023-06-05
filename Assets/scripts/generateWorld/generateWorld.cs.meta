@@ -1,0 +1,45 @@
+fileFormatVersion: 2
+guid: 6c6cf383a21958b4ba02b0bdb780951d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Ground_01: {fileID: 959261507318197415, guid: eac68e44e96b31b40b1f2953163c419a,
+      type: 3}
+  - Ground_02: {fileID: 1343663639781744923, guid: e12d6004270ad7b40bdc41b510490572,
+      type: 3}
+  - Tree_01: {fileID: 8135219762238765701, guid: 6b2a471e75c034841b6e26a019025cfb,
+      type: 3}
+  - Tree_02: {fileID: 5476546300852309796, guid: 0c06c6cf13e4e4141ae92bbc16469d46,
+      type: 3}
+  - Rock_01: {fileID: 8134653029572699311, guid: dccf723b9c3e2594f88cc749aed0d85b,
+      type: 3}
+  - Rock_02: {fileID: 7586644241304664987, guid: 84d01e7a38bd5284f983f2256f18c644,
+      type: 3}
+  - Rock_03: {fileID: 9074554848577067866, guid: e56e738d8de79594f9b8e673ccbfe00a,
+      type: 3}
+  - Rock_04: {fileID: 2655641103264524580, guid: 09eabc6295d89274cba1eb9dd07b7727,
+      type: 3}
+  - Mushroom_01: {fileID: 6740359750763386675, guid: ebf03ab4bd760e54db8dc6551855d136,
+      type: 3}
+  - Mushroom_02: {fileID: 8556071724357836532, guid: bcd9a956c09bb354482592fb5c3f66bd,
+      type: 3}
+  - Bush_01: {fileID: 823962662090009927, guid: c2d4a45f3a44ae249b7ae5729905e202,
+      type: 3}
+  - Bush_02: {fileID: 4312665814506888125, guid: cd21129ce58542641956b82eedb14ad4,
+      type: 3}
+  - Grass_01: {fileID: 6762533783031966176, guid: 6bfcf4f91ce87c342b5aa67dd7cd86f4,
+      type: 3}
+  - Grass_02: {fileID: 6082596600005332534, guid: e73dafa05e8ac054aa169b2aa514d4c5,
+      type: 3}
+  - Stump_01: {instanceID: 0}
+  - Branch_01: {instanceID: 0}
+  - Wolf: {instanceID: 0}
+  - storage: {instanceID: 0}
+  - player: {instanceID: 0}
+  - genWorld: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
