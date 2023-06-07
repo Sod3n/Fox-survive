@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3933864500106273136}
   - component: {fileID: 3933864500106273137}
   - component: {fileID: 3933864500106273142}
+  - component: {fileID: 2675005681322227438}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0.00042513467, y: 0.99619704, z: -0.08699178, w: 0.004868482}
   m_LocalPosition: {x: 2.96, y: 1000, z: 15.892717}
   m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3933864500339674192}
   - {fileID: 3933864500818155046}
@@ -100,6 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 2
   distance: 1
+  maxDistance: 3
+  minDistance: 0.5
+  scrollStep: 0.1
   height: 1
   offsetPosition: 0
   minY: 30
@@ -108,6 +113,40 @@ MonoBehaviour:
   inversionY: 0
   smooth: 0
   speed: 8
+--- !u!114 &2675005681322227438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3933864500106273138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3933864500339674193
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +176,7 @@ Transform:
   m_LocalRotation: {x: -0.00042513467, y: -0.99619704, z: 0.08699178, w: 0.004868482}
   m_LocalPosition: {x: 0.01, y: 0.1, z: 0.56}
   m_LocalScale: {x: 4.5714192, y: 2.7083201, z: -0.10629078}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3933864500106273143}
   m_RootOrder: 0
@@ -160,10 +200,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -188,6 +230,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &3933864500339674197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crHole: {fileID: 0}
-  moon: {fileID: 3933864500818155047}
+  dayAndNightCircle: {fileID: 0}
+  directLight: {fileID: 0}
   speed: 5
   blackout: 0
   disCam: {fileID: 2100000, guid: 5eb17d19cdbf48a428ebfb1491033918, type: 2}
@@ -235,6 +279,7 @@ Transform:
   m_LocalRotation: {x: -0.00042513467, y: -0.99619704, z: 0.08699178, w: 0.004868482}
   m_LocalPosition: {x: -50.782234, y: -1470.3197, z: 275.40283}
   m_LocalScale: {x: 0.11012997, y: 0.11013, z: 0.11012995}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3933864501793294290}
   m_Father: {fileID: 3933864500106273143}
@@ -259,10 +304,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -287,6 +334,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3933864501793294291
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +362,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.7, z: -0}
   m_LocalScale: {x: 9.080177, y: 9.080178, z: 9.080178}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3933864500818155046}
   m_RootOrder: 0
@@ -377,5 +426,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 1.15e-43, z: 1.5588e-41, w: 5.9e-44}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0

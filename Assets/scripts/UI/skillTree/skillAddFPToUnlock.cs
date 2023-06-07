@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class skillAddFPToUnlock : MonoBehaviour, IPointerUpHandler
+public class skillAddFPToUnlock : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
     public static bool selectingSkill = false;
     public int spendFPByClick = 20;
@@ -19,6 +20,7 @@ public class skillAddFPToUnlock : MonoBehaviour, IPointerUpHandler
     }
     public void OnPointerUp(PointerEventData eventData)
     {
+        Debug.Log("try");
         if (!selectingSkill)
         {
             unlockSkillConditions unlockSkillConditions = GetComponent<unlockSkillConditions>();
@@ -58,5 +60,10 @@ public class skillAddFPToUnlock : MonoBehaviour, IPointerUpHandler
             }
         }
         
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+
     }
 }

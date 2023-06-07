@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody))]
 
@@ -13,7 +14,7 @@ public class playercontroller : MonoBehaviour
 
 	public KeyCode jumpButton = KeyCode.Space; // клавиша для прыжка
 	public float jumpForce = 10; // сила прыжка
-	public float jumpDistance = 1.2f; // расстояние от центра объекта, до поверхности
+	public float jumpDistance = 2;
 	public bool doubleJump = false;
 	public bool speedBoost = false;
 	public float plusHarvestSpeedOnSpeedBoost = 2f;
@@ -22,8 +23,8 @@ public class playercontroller : MonoBehaviour
 	public GameObject skillMenu;
 	public GameObject skills;
 	public GameObject plInf;
-	public GameObject foot;
-	public GameObject statistic;
+	public List<Transform> foots;
+    public GameObject statistic;
 
 	public Animator animator;
 
@@ -48,7 +49,6 @@ public class playercontroller : MonoBehaviour
 		gameObject.tag = "Player";
 
 		needs = GetComponent<needs>();
-		footScript = foot.GetComponent<foot>();
 
 		// объекту должен быть присвоен отдельный слой, для работы прыжка
 		layerMask = 1 << gameObject.layer | 1 << 2;
@@ -102,7 +102,21 @@ public class playercontroller : MonoBehaviour
 	{
 		bool result = false;
 
-		if (footScript.onGround)
+		bool onGround = false;
+
+		int layerMask = 1 << 8;
+        layerMask = ~layerMask;
+        RaycastHit hit;
+		foreach(Transform foot in foots)
+		{
+            if (Physics.Raycast(foot.transform.position, Vector3.down, out hit, jumpDistance, layerMask))
+            {
+                Debug.DrawRay(foot.transform.position, Vector3.down * hit.distance, Color.yellow);
+                onGround = true;
+            }
+        }
+
+        if (onGround)
 		{
 			result = true;
 			doubleJumpState = 0;
@@ -118,14 +132,15 @@ public class playercontroller : MonoBehaviour
 
 	void Update()
 	{
-		if (!pause.Pause)
+		Debug.DrawRay(foots[0].transform.position, Vector3.down * jumpDistance, Color.yellow);
+        if (!pause.Pause)
 		{
 			h = Input.GetAxis("Horizontal");
 			v = Input.GetAxis("Vertical");
 
 			// вектор направления движения
 			direction = new Vector3(h, 0, v);
-			if (direction == Vector3.zero || !footScript.onGround)
+			/*if (direction == Vector3.zero || !footScript.onGround)
 			{
 				animator.SetBool("walk", false);
 				animator.SetBool("Idle", true);
@@ -134,11 +149,11 @@ public class playercontroller : MonoBehaviour
             {
 				animator.SetBool("walk", true);
 				animator.SetBool("Idle", false);
-			}
+			}*/
 			direction = Camera.main.transform.TransformDirection(direction);
 			direction = new Vector3(direction.x, 0, direction.z);
 
-			RaycastHit RayHit;
+            /*RaycastHit RayHit;
 
 			Debug.DrawRay(transform.position + Vector3.up * 0.01f - transform.forward * 0.2f, Vector3.down * 0.1f, Color.red);
 
@@ -163,14 +178,6 @@ public class playercontroller : MonoBehaviour
                 else
                 {
 					body.freezeRotation = true;
-					/*float y = transform.eulerAngles.y;
-					float z = transform.eulerAngles.z;
-					Quaternion endPoint = startRot;
-					if ((transform.rotation.x - endPoint.x > 3) || (transform.rotation.y - endPoint.y > 3) || (transform.rotation.z - endPoint.z > 3) || (transform.rotation.w - endPoint.w > 3))
-					{
-						transform.rotation = Quaternion.Lerp(transform.rotation, endPoint, 10 * Time.deltaTime);
-						transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, y, z));
-					}*/
 				}
 			}
 			else
@@ -187,8 +194,7 @@ public class playercontroller : MonoBehaviour
 					transform.rotation = Quaternion.Lerp(transform.rotation, endPoint, 10 * Time.deltaTime);
 					transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, y, transform.eulerAngles.z));
 				}
-			}
-			body.freezeRotation = true;
+			}*/
 
 			if (Mathf.Abs(v) > 0 || Mathf.Abs(h) > 0) // разворот тела по вектору движения
 			{

@@ -21,6 +21,7 @@ public class menuMethods : MonoBehaviour
     Resolution[] rsl;
     List<string> resolutions;
     public Dropdown dropdown;
+    public Slider slider;
 
     void Update()
     {
@@ -56,6 +57,9 @@ public class menuMethods : MonoBehaviour
         }
         dropdown.ClearOptions();
         dropdown.AddOptions(resolutions);
+        dropdown.value = dropdown.options.Count-1;
+        Screen.fullScreen = true;
+        am.SetFloat("masterVolume", slider.value);
         //DontDestroyOnLoad(this);
     }
 
@@ -170,6 +174,10 @@ public class menuMethods : MonoBehaviour
     }
     public void AudioVolume(float sliderValue)
     {
+        if(sliderValue == slider.minValue)
+        {
+            sliderValue = -100;
+        }
         am.SetFloat("masterVolume", sliderValue);
     }
     public void Quality(int q)

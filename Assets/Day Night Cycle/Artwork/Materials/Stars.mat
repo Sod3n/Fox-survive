@@ -2,15 +2,19 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Stars
   m_Shader: {fileID: 4800000, guid: 27568febf39b98244b4380a23f943286, type: 3}
-  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION _MAPPING_LATITUDE_LONGITUDE_LAYOUT
-  m_LightmapFlags: 1
+  m_ValidKeywords:
+  - _ALPHABLEND_ON
+  - _EMISSION
+  m_InvalidKeywords:
+  - _MAPPING_LATITUDE_LONGITUDE_LAYOUT
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -38,12 +42,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 3, y: 3}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 4, y: 4}
+        m_Offset: {x: 1, y: 1}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 1b80afa63b6d9814bb2a9a4c618b3e0b, type: 3}
-        m_Scale: {x: 3, y: 3}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 4, y: 4}
+        m_Offset: {x: 1, y: 1}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -56,6 +60,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -85,7 +90,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
-    - _Color: {r: 0.58823526, g: 0.58823526, b: 0.58823526, a: 0.20392157}
+    - _Color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0.21960784}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
     - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

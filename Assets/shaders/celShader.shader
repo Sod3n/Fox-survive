@@ -16,8 +16,10 @@ Shader "Unlit/celShader"
     {
              Pass
         {
+Blend SrcAlpha OneMinusSrcAlpha
             Tags {"LightMode" = "ForwardAdd"
             "PassFlags" = "OnlyDirectional"
+            "RenderType"="Transparent"
         }
 
             Cull off
@@ -57,7 +59,7 @@ Shader "Unlit/celShader"
                 o.worldNormal = UnityObjectToWorldNormal(v.normal);
 
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
-                TRANSFER_SHADOW(o)
+                TRANSFER_SHADOW(o);
                 return o;
             }
 
@@ -117,7 +119,8 @@ Shader "Unlit/celShader"
                     float4 rim = rimIntensity * _RimColor;*/
 
                     // Применяем затенение
-                    col *= (lightIntensity) * (_LightColor0) * (_AmbientColor);
+                    col.rgb *= (lightIntensity) * (_LightColor0) * (_AmbientColor);
+                    col.a = _AmbientColor.a;
                     return col;
                 }
                 else {
@@ -131,7 +134,9 @@ Shader "Unlit/celShader"
                 }
             Pass
         {
+Blend SrcAlpha OneMinusSrcAlpha
             Tags {"LightMode" = "ForwardAdd"
+"RenderType"="Transparent"  
         }
 
             Cull off
@@ -173,7 +178,7 @@ Shader "Unlit/celShader"
             o.worldNormal = UnityObjectToWorldNormal(v.normal);
             
             o.posWorld = mul(unity_ObjectToWorld, v.vertex);
-            TRANSFER_SHADOW(o)
+            TRANSFER_SHADOW(o);
             return o;
         }
 
@@ -236,6 +241,7 @@ Shader "Unlit/celShader"
                     lightIntensity = lightIntensity - 0.1;
                 }*/
                 col *= (lightIntensity) * (_LightColor0) * (_AmbientColor);
+                col.a = _AmbientColor.a;
                 return col;
             }
         }
@@ -247,9 +253,10 @@ Shader "Unlit/celShader"
 
             Pass
         {
+Blend SrcAlpha OneMinusSrcAlpha
             // Скрываем полигоны, повернутые к камере
             Cull Front
-
+            
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -293,7 +300,9 @@ Shader "Unlit/celShader"
             fixed4 frag(v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-                return col * _OUTLINE_COLOR * (_LightColor0);
+                col = col * _OUTLINE_COLOR * (_LightColor0);
+                col.a = _AmbientColor.a;
+                return col;
             }
             ENDCG
         }

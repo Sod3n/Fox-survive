@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class dayCircle : MonoBehaviour
     public Color darkColor;
     public Color yellowColor;
     public float speedOfLightChange = 0.1f;
+    public Material cloudsMaterial;
 
     private Color lightColor;
     private Color curColor;
@@ -21,8 +23,8 @@ public class dayCircle : MonoBehaviour
     private float cg;
     private float curI = 1;
 
-    
-    // Start is called before the first frame update
+
+
     void Start()
     {
         lightColor = playerCamera.GetComponent<Camera>().backgroundColor;
@@ -48,7 +50,11 @@ public class dayCircle : MonoBehaviour
                 setColorImplement(darkColor);
                 StartCoroutine(colorSet());
                 stars.SetActive(true);
+                Color clcol = cloudsMaterial.GetColor(Shader.PropertyToID("_AmbientColor"));
+                clcol.a = 0.3f;
+                cloudsMaterial.SetColor(Shader.PropertyToID("_AmbientColor"), clcol);
                 //playerCamera.GetComponent<Camera>().backgroundColor = darkColor;
+
             }
             else if (rotx > -90 && rotx < 80f && lastColor == yellowColor)
             {
@@ -62,6 +68,9 @@ public class dayCircle : MonoBehaviour
             if ((rotx > -100 && rotx < -90 && lastColor == darkColor) || (rotx > 80f && lastColor == lightColor))
             {
                 stars.SetActive(false);
+                Color clcol = cloudsMaterial.GetColor(Shader.PropertyToID("_AmbientColor"));
+                clcol.a = 1;
+                cloudsMaterial.SetColor(Shader.PropertyToID("_AmbientColor"), clcol);
                 lightSet(0.5f);
                 setColorImplement(yellowColor);
                 Debug.Log("start" + lastColor);
@@ -127,4 +136,5 @@ public class dayCircle : MonoBehaviour
         cb = (curColor.b - needColor.b) / (1 / (speedOfLightChange));
         cg = (curColor.g - needColor.g) / (1 / (speedOfLightChange));
     }
+
 }

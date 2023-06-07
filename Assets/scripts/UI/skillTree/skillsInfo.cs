@@ -29,6 +29,7 @@ public class skillsInfo : MonoBehaviour
         {
             GameObject c = Instantiate(cell);
             c.transform.SetParent(transform);
+            c.transform.localScale = new Vector3(1, 1, 1);
             if (skills[i].Icon)
                 c.transform.Find("Icon").GetComponent<Image>().sprite = skills[i].Icon;
             if (skills[i].Name != null)
