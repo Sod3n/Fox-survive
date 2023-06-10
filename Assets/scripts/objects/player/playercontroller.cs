@@ -19,12 +19,9 @@ public class playercontroller : MonoBehaviour
 	public bool speedBoost = false;
 	public float plusHarvestSpeedOnSpeedBoost = 2f;
 
-	public GameObject mainMenu;
-	public GameObject skillMenu;
-	public GameObject skills;
-	public GameObject plInf;
-	public List<Transform> foots;
-    public GameObject statistic;
+	
+    public List<Transform> foots;
+    
 
 	public Animator animator;
 
@@ -58,7 +55,6 @@ public class playercontroller : MonoBehaviour
 	{
 		//mainMenu = GameObject.FindGameObjectWithTag("MainMenu");
 		//plInf = GameObject.Find("playerInfo");
-		mainMenu.SetActive(false);
 		startRot = transform.rotation;
 		Debug.Log(startRot);
 	}
@@ -69,7 +65,7 @@ public class playercontroller : MonoBehaviour
 		{
 			body.isKinematic = false;
 			
-			if (Input.GetButton("speedBoost") && speedBoost == true)
+			if (Input.GetButton("speedBoost") && speedBoost == true && GetJump())
             {
 				//body.velocity = direction * speed * 0.01f * 2;
 				//transform.Translate(direction * speed * Time.deltaTime * 2);
@@ -102,7 +98,7 @@ public class playercontroller : MonoBehaviour
 	{
 		bool result = false;
 
-		bool onGround = false;
+		onGround = false;
 
 		int layerMask = 1 << 8;
         layerMask = ~layerMask;
@@ -123,7 +119,6 @@ public class playercontroller : MonoBehaviour
 		}
 		else if(doubleJump == true && doubleJumpState == 0)
 		{
-			doubleJumpState = 1;
 			result = true;
 		}
 
@@ -207,77 +202,21 @@ public class playercontroller : MonoBehaviour
 
 			if (Input.GetKeyDown(jumpButton) && GetJump())
 			{
-				body.velocity = new Vector2(0, jumpForce);
-			}
+				if(!onGround)
+					doubleJumpState = 1;
+                body.velocity = new Vector2(0, jumpForce);
+            }
 
 			if (Input.GetButtonUp("speedBoost") && speedBoost == true)
 			{
 				if (needs.sprint)
 				{
 					needs.sprint = false;
-					needs.speedOfHarvest -= speedOfHarvest;
+					needs.speedOfHarvest -= plusHarvestSpeedOnSpeedBoost;
 				}
 
 			}
 
-		}
-		if (Input.GetButtonDown("Cancel"))
-		{
-			if (pause.Pause == true)
-			{
-				pause.Pause = false;
-				plInf.SetActive(true);
-				skills.SetActive(true);
-				skillMenu.SetActive(false);
-				statistic.SetActive(false);
-				mainMenu.SetActive(false);
-				Cursor.visible = false;
-			}
-			else
-			{
-				pause.Pause = true;
-				plInf.SetActive(false);
-				skills.SetActive(false);
-				mainMenu.SetActive(true);
-				Cursor.visible = true;
-			}
-		}
-		if (Input.GetButtonDown("Skill Menu"))
-		{
-			if (skillMenu.activeInHierarchy == true)
-			{
-				pause.Pause = false;
-				plInf.SetActive(true);
-				skillMenu.SetActive(false);
-				Cursor.visible = false;
-			}
-			else
-			{
-				pause.Pause = true;
-				plInf.SetActive(false);
-				skillMenu.SetActive(true);
-				Cursor.visible = true;
-			}
-		}
-		if (Input.GetButtonDown("Statistics"))
-		{
-			if (statistic.activeInHierarchy == true)
-			{
-				pause.Pause = false;
-				plInf.SetActive(true);
-				skills.SetActive(true);
-				statistic.SetActive(false);
-				Cursor.visible = false;
-			}
-			else
-			{
-				pause.Pause = true;
-				statistics.updateStatistics();
-				plInf.SetActive(false);
-				skills.SetActive(false);
-				statistic.SetActive(true);
-				Cursor.visible = true;
-			}
 		}
 	}
 	/*void OnCollisionStay(Collision col)

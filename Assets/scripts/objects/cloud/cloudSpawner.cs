@@ -12,15 +12,31 @@ public class cloudSpawner : MonoBehaviour
     public GameObject[] cloudPrefabs;
     public GameObject player;
 
+#if UNITY_EDITOR
+    public static Material cloudMaterial;
+#endif
+
     private List<GameObject> clouds = new List<GameObject>();
     private int cursor = 0;
     void Start()
     {
-        GameObject go;
+#if UNITY_EDITOR
+        Debug.Log(cloudPrefabs[0].GetComponent<Renderer>().sharedMaterial);
+        cloudMaterial = new Material(cloudPrefabs[0].GetComponent<Renderer>().sharedMaterial);
+        for(int i = 0; i < cloudPrefabs.Length; i++)
+        {
+            GameObject o = Instantiate(cloudPrefabs[i]);
+            o.GetComponent<MeshRenderer>().material = cloudMaterial;
+            o.SetActive(false);
+            cloudPrefabs[i] = o;
+        }
+#endif
+    GameObject go;
         for (int i = 0; i <  maxCountOfClouds; i++)
         {
             go = Instantiate(cloudPrefabs[Random.Range(0, cloudPrefabs.Length)], new Vector3(0, -1000, 0), new Quaternion());
             //go.transform.parent = transform;
+            go.SetActive(true);
             clouds.Add(go);
         }
         StartCoroutine(spawnCloud());

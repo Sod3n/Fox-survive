@@ -12,6 +12,8 @@ public class subInfo : MonoBehaviour
         subInfoObject = gameObject;
         subInfo.addSubInfo(3, "Esc - open menu");
         subInfo.addSubInfo(4, "T - open skill menu");
+        subInfo.addSubInfo(5, "Tab - open statistics");
+        subInfo.addSubInfo(6, "F1 - hide hints");
     }
     private void Update()
     {

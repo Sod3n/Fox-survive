@@ -47,13 +47,15 @@ public class cameraconroller : MonoBehaviour
 	{
 		RaycastHit hit;
 		Debug.DrawLine(target, position, Color.blue);
-		if (Physics.Linecast(target, position, out hit) && hit.collider.gameObject.tag != "Player")
+		if (Physics.Linecast(target, position, out hit) && (hit.collider.gameObject.tag == "Ground" || hit.collider.gameObject.tag == "Ground_two"))
 		{
 			float tempDistance = Vector3.Distance(target, hit.point);
 			Vector3 pos = target - (transform.rotation * Vector3.forward * tempDistance);
 			position = new Vector3(pos.x, position.y, pos.z); // сдвиг позиции в точку контакта
-		}
-		return position;
+        }
+        position = (position - target) * 0.9f + target;
+        Debug.Log(position);
+        return position;
 	}
 
 	void LateUpdate()
@@ -73,7 +75,7 @@ public class cameraconroller : MonoBehaviour
 				position = position + (transform.rotation * Vector3.right * offsetPosition); // сдвиг по горизонтали
 				position = new Vector3(position.x, player.position.y + height, position.z); // корректировка высоты
 				position = PositionCorrection(player.position, position); // находим текущую позицию, относительно игрока
-
+				
 				// поворот камеры по оси Х
 				rotationY += Input.GetAxis("Mouse Y") * sensitivity;
 				rotationY = Mathf.Clamp(rotationY, -Mathf.Abs(minY), Mathf.Abs(maxY));

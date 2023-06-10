@@ -27,7 +27,7 @@ public class wolfBehavior : MonoBehaviour
         if (!pause.Pause)
         {
             body.isKinematic = false;
-            if (Vector3.Distance(transform.position, target.transform.position) < seeDistance && angry == true)
+            if (Vector3.Distance(transform.position, target.transform.position) < seeDistance && angry == true )
             {
                 if (Vector3.Distance(transform.position, target.transform.position) > attackDistance)
                 {

@@ -59,7 +59,7 @@ public class cell : MonoBehaviour, IPointerClickHandler
             col--;
             GameObject gameObject = storage.GetComponent<storage>().removeGameObject(storedObj);
             mouth.GetComponent<thingsInteract>().pickUp(gameObject);
-            mouth.GetComponent<storageInteract>().hideStorageInventory();
+            mouth.GetComponent<storageInteract>().menuManager.activateFirstLayerMenu(mouth.GetComponent<storageInteract>().menuManager.storage);
         }
     }
 }

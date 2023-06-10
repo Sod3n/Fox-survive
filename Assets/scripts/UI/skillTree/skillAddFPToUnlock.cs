@@ -11,7 +11,8 @@ public class skillAddFPToUnlock : MonoBehaviour, IPointerUpHandler, IPointerDown
     public int spendFPByClick = 20;
     public GameObject Lock;
     public GameObject Needs;
-    private int unlockCursor = 0;
+    
+    public int unlockCursor = 0;
 
     public void Start()
     {

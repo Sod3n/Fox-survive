@@ -22,7 +22,7 @@ public class dayCircle : MonoBehaviour
     private float cb;
     private float cg;
     private float curI = 1;
-
+    private Coroutine curColorSet;
 
 
     void Start()
@@ -37,6 +37,9 @@ public class dayCircle : MonoBehaviour
     {
         if (!pause.Pause)
         {
+            #if UNITY_EDITOR
+        cloudsMaterial = cloudSpawner.cloudMaterial;
+#endif
             transform.Rotate(speed * Time.deltaTime, 0, 0);
             rotx += speed * Time.deltaTime;
             if(rotx >= 180)
@@ -48,7 +51,7 @@ public class dayCircle : MonoBehaviour
                 //directLight.SetActive(false);
                 lightSet(0);
                 setColorImplement(darkColor);
-                StartCoroutine(colorSet());
+                startColorSetCoroutine();
                 stars.SetActive(true);
                 Color clcol = cloudsMaterial.GetColor(Shader.PropertyToID("_AmbientColor"));
                 clcol.a = 0.3f;
@@ -61,7 +64,7 @@ public class dayCircle : MonoBehaviour
                 //directLight.SetActive(true);
                 lightSet(1);
                 setColorImplement(lightColor);
-                StartCoroutine(colorSet());
+                startColorSetCoroutine();
                 //playerCamera.GetComponent<Camera>().backgroundColor = lightColor;#6D84A800
 
             }
@@ -73,13 +76,19 @@ public class dayCircle : MonoBehaviour
                 cloudsMaterial.SetColor(Shader.PropertyToID("_AmbientColor"), clcol);
                 lightSet(0.5f);
                 setColorImplement(yellowColor);
-                Debug.Log("start" + lastColor);
-                StartCoroutine(colorSet());
+                startColorSetCoroutine();
             }
             //Debug.Log(rotx);
             //Debug.Log(lastColor == lightColor);
         }
             
+    }
+    private void startColorSetCoroutine()
+    {
+        if (curColorSet != null)
+            StopCoroutine(curColorSet);
+        curI = 1;
+        curColorSet = StartCoroutine(colorSet());
     }
     private void lightSet(float light)
     {
@@ -121,7 +130,7 @@ public class dayCircle : MonoBehaviour
             curI -= speedOfLightChange;
             curColor = new Color(curColor.r - cr, curColor.g - cg, curColor.b - cb);
             playerCamera.GetComponent<Camera>().backgroundColor = curColor;
-            StartCoroutine(colorSet());
+            curColorSet = StartCoroutine(colorSet());
         }
         else
         {

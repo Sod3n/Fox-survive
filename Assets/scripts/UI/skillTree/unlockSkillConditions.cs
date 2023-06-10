@@ -6,7 +6,20 @@ using UnityEngine.UI;
 
 public class unlockSkillConditions : MonoBehaviour
 {
-    public int currentFP = 0;
+    public skillAddFPToUnlock skillAddFPToUnlock;
+    private int _currentFP = 0;
+    public int currentFP
+    {
+        get
+        {
+            return _currentFP;
+        }
+        set
+        {
+            _currentFP = value;
+            skillAddFPToUnlock.Needs.GetComponent<TextMeshProUGUI>().text = currentFP + " FP / " + unlockFP[skillAddFPToUnlock.unlockCursor] + " FP";
+        }
+    }
     public int[] unlockFP;
     public int[] unlockEventId;
     public string[] Descriptions;
@@ -15,7 +28,6 @@ public class unlockSkillConditions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame

@@ -23,7 +23,7 @@ public class thingsInteract : MonoBehaviour
     [Range(0, 1f)]
     public float lightingStrength = 0.2f;
     private Shader standartShader;
-    private GameObject enterObj;
+    public GameObject enterObj;
     void Start()
     {
         
@@ -41,33 +41,29 @@ public class thingsInteract : MonoBehaviour
                 removeObjFromHands();
             }
         }
-        
-    }
-    void OnTriggerStay(Collider collider)
-    {
         if (!pause.Pause && !pickUping)
         {
-            if(enterObj != null)
+            if (enterObj != null  && pickUpedObj == null)
             {
-                
-                if (collider.gameObject.tag == "Mushroom")
+
+                if (enterObj.gameObject.tag == "Mushroom")
                 {
                     subInfo.addSubInfo(0, "E - eat");
                     if (Input.GetButtonDown("Eat"))
                     {
                         need.Eat(mushroomSatiety);
                         statistics.foodshrumsEated++;
-                        Destroy(collider.gameObject);
+                        Destroy(enterObj.gameObject);
                     }
                 }
-                if (collider.gameObject.tag == "Amanita")
+                if (enterObj.gameObject.tag == "Amanita")
                 {
                     subInfo.addSubInfo(0, "E - eat");
                     if (Input.GetButtonDown("Eat"))
                     {
                         need.Heal(amanitaHeal);
                         statistics.amanitsEated++;
-                        Destroy(collider.gameObject);
+                        Destroy(enterObj.gameObject);
                     }
                 }
                 if (Input.GetButtonDown("pickUp"))
@@ -81,6 +77,11 @@ public class thingsInteract : MonoBehaviour
                 subInfo.addSubInfo(1, "F - pick up object");
             }
         }
+
+    }
+    void OnTriggerStay(Collider collider)
+    {
+        
         
     }
     public void pickUp(GameObject gameObject)

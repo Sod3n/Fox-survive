@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.065049, y: 2.065049, z: 2.065049}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9172420846756232641}
   m_RootOrder: 3
@@ -43,7 +44,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 7
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4818762537338916879
 MonoBehaviour:
@@ -57,13 +58,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f4c2411abf2794eb7c3b762edc2727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 2
+  attackDistance: 4
   CDAttack: 2000
   attackStun: 1000
   speed: 1
   angry: 1
   wolf: {fileID: 9169927127805416379}
-  speedOfAttack: 400
+  speedOfAttack: 600
   attackReady: 1
   stun: 0
   speedOfPassiveRotation: 1
@@ -93,6 +94,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.6, y: -0.022, z: -0.976}
   m_LocalScale: {x: 2.065049, y: 2.065049, z: 2.065049}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7915304213000445571}
   m_Father: {fileID: 9172420846756232641}
@@ -127,6 +129,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.11, y: 987.05, z: 5.41}
   m_LocalScale: {x: 0.48425, y: 0.48425, z: 0.48425}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9175401635581276587}
   - {fileID: 9170666910800417944}
@@ -212,6 +215,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.43, z: -0.84}
   m_LocalScale: {x: 2.065049, y: 2.065049, z: 2.065049}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9172420846756232641}
   m_RootOrder: 1
@@ -288,6 +292,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 2.065049, y: 2.0650492, z: 2.0650492}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9172420846756232641}
   m_RootOrder: 2
@@ -317,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969d64a2ed64dc24e94c6548d2e54331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 50
+  force: 20
   dieParticle: {fileID: 120410, guid: 6636b3078b0905e489f698a11b7a6b6b, type: 3}
   loot: {fileID: 1175778754726153265}
   wolf: {fileID: 9169927127805416379}
@@ -349,6 +354,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9172420846756232641}
   m_RootOrder: 0
@@ -372,6 +378,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

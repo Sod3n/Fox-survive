@@ -10,7 +10,7 @@ public class skillsInfo : MonoBehaviour
     public GameObject canvas;
     public GameObject Description;
     public skill[] skills;
-
+    public List<GameObject> skillsObjects = new List<GameObject>();
     //private List<GameObject> skills = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -47,8 +47,12 @@ public class skillsInfo : MonoBehaviour
             if (c.GetComponent<selectSkill>())
                 c.GetComponent<selectSkill>().canvas = canvas;
             c.transform.localPosition = new Vector3(20, -c.transform.Find("Icon").GetComponent<RectTransform>().rect.height * i - 5 - 20 * i, 0);
-            //skills.Add(c);
+            c.GetComponent<unlockSkillConditions>().skillAddFPToUnlock = c.GetComponent<skillAddFPToUnlock>();
+            skillsObjects.Add(c);
         }
+        GameObject e = new GameObject();
+        e.AddComponent<RectTransform>().sizeDelta = new Vector2(100, 10);
+        e.transform.SetParent(transform);
     }
     
 }

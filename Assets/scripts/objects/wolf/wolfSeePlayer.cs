@@ -36,7 +36,7 @@ public class wolfSeePlayer : MonoBehaviour
         {
             if (!stun)
             {
-                if (target)
+                if (target && target.gameObject.activeInHierarchy)
                 {
                     if (angry == true)
                     {
