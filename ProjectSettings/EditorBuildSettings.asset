@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Fox Survive/Scenes/Menu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Game.unity
+    path: Assets/Fox Survive/Scenes/Game.unity
     guid: 06bd975e281aed143b76a5dab5339b31
   m_configObjects: {}
