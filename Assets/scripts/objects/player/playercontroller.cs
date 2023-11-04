@@ -117,10 +117,6 @@ public class playercontroller : MonoBehaviour
 			result = true;
 			doubleJumpState = 0;
 		}
-		else if(doubleJump == true && doubleJumpState == 0)
-		{
-			result = true;
-		}
 
 		return result;
 	}
@@ -200,7 +196,7 @@ public class playercontroller : MonoBehaviour
 
 			//Debug.DrawRay(transform.position, Vector3.down * jumpDistance, Color.red); // подсветка, для визуальной настройки jumpDistance
 
-			if (Input.GetKeyDown(jumpButton) && GetJump())
+			if (Input.GetKeyDown(jumpButton) && (GetJump() || doubleJump == true && doubleJumpState == 0))
 			{
 				if(!onGround)
 					doubleJumpState = 1;

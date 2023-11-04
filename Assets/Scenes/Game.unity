@@ -10124,7 +10124,7 @@ MonoBehaviour:
   Wolf: {fileID: 9169927127805416379, guid: c90174ae7b78b8241aff4c5165b7c1a1, type: 3}
   minNumberOfWolf: 0
   maxNumberOfWolf: 4
-  chanceSpawnWolf: 25
+  chanceSpawnWolf: 40
   objStorages: []
   player: {fileID: 124070275}
   playerTransform: {x: 0, y: 0, z: 0}
