@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5646304994849774997}
   - component: {fileID: 5646304994849774998}
+  - component: {fileID: 8459016116837570413}
   m_Layer: 0
   m_Name: DayAndNight
   m_TagString: Untagged
@@ -24,12 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5646304994849774996}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 53.9, y: 4.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5646304994849774998
 MonoBehaviour:
@@ -43,10 +45,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93a5a11df7723049948166bcf74f08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 1
   directLight: {fileID: 0}
   playerCamera: {fileID: 0}
   stars: {fileID: 0}
-  darkColor: {r: 0, g: 0, b: 0, a: 0}
-  yellowColor: {r: 0, g: 0, b: 0, a: 0}
-  speedOfLightChange: 0.1
+  darkColor: {r: 0.05490196, g: 0.07450981, b: 0.105882354, a: 0}
+  yellowColor: {r: 0.5660378, g: 0.43582857, b: 0.31327873, a: 0}
+  speedOfLightChange: 0.01
+  cloudsMaterial: {fileID: 2100000, guid: 2393d697befcd824a828608f161f96e7, type: 2}
+--- !u!114 &8459016116837570413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646304994849774996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ffa9eed1f5fbde4d825b6321dfe9610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
