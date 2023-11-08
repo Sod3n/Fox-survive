@@ -21,7 +21,7 @@ namespace Player
 
         public void Heal(float value)
         {
-            _model.Health += value;
+            _model.Health += value; 
         }
 
         public void Damage(float value)
