@@ -23,14 +23,26 @@ namespace Player
 
         private Vector3 _relativeDirection;
         private Quaternion _relativeRotation;
+        private float _relativeSpeed;
         public void FixedTick()
         {
             CalculateRelativeDirection();
-            _player.Rigidbody.MovePosition(_player.Rigidbody.position +
-                _settings.Speed * _relativeDirection * Time.deltaTime);
 
             CalculateRelativeRotation();
             _player.Rigidbody.MoveRotation(_relativeRotation.normalized);
+
+            if (_relativeDirection != Vector3.zero && 
+                _player.Rigidbody.rotation != Quaternion.LookRotation(_relativeDirection, Vector3.up))
+            {
+                _relativeSpeed = _settings.Speed * _settings.SpeedScaleOnRotation;
+            }
+            else
+            {
+                _relativeSpeed = _settings.Speed;
+            }
+
+            _player.Rigidbody.MovePosition(_player.Rigidbody.position +
+                _relativeSpeed * _relativeDirection * Time.deltaTime);
         }
 
         private void CalculateRelativeDirection()
@@ -56,6 +68,7 @@ namespace Player
             public float Speed;
             [Tooltip("Degrees per second.")]
             public float RotationSpeed;
+            public float SpeedScaleOnRotation;
         }
     }
 }
