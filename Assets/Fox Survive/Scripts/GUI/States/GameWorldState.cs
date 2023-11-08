@@ -26,7 +26,7 @@ namespace GUI
         {
             _player.OnDie += OnPlayerDie;
             _playerDied = false;
-            _healthBarSizeDelta = _settings.HealthBar.sizeDelta;
+            _healthBarScale = _settings.HealthBar.localScale;
         }
 
         public void Exit()
@@ -38,12 +38,12 @@ namespace GUI
             _playerDied = true;
         }
 
-        private Vector2 _healthBarSizeDelta;
+        private Vector3 _healthBarScale;
 
         public void Tick()
         {
-            _healthBarSizeDelta.x = _player.Health * _settings.UIScale;
-            _settings.HealthBar.sizeDelta = _healthBarSizeDelta;
+            _healthBarScale.x = _player.Health / 100;
+            _settings.HealthBar.localScale = _healthBarScale;
         }
 
         public IState GetNextState()
@@ -59,8 +59,8 @@ namespace GUI
         [Serializable]
         public class Settings
         {
-            [Tooltip("Scale for health parameter to equal a rect transform width.")]
-            public float UIScale;
+            //[Tooltip("Scale for health parameter to equal a rect transform width.")]
+            //public float UIScale;
 
             public RectTransform HealthBar;
             public RectTransform HealthBarBackground;
