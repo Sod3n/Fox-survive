@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9176471, g: 0.85098046, b: 0.77647066, a: 0.77254903}
+  m_Color: {r: 0.9176471, g: 0.85098046, b: 0.77647066, a: 0.9490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9743,8 +9743,11 @@ MonoBehaviour:
   DeathScreenSettings:
     Menu: {fileID: 2132555431}
   GameWorldSettings:
+    BarsBaseValue: 100
     HealthBar: {fileID: 319699624}
     HealthBarBackground: {fileID: 1659647294}
+    StarveBar: {fileID: 1967878076}
+    StarveBarBackground: {fileID: 1654961941}
 --- !u!114 &1029589036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11041,6 +11044,7 @@ MonoBehaviour:
   Player:
     _rigidbody: {fileID: 126915057}
     _maxHealth: 100
+    _maxStarve: 100
     _respawnPoint: {fileID: 1475167578703279296}
   MovementSettings:
     Speed: 4
@@ -11053,6 +11057,9 @@ MonoBehaviour:
     FeetY: {fileID: 1520738642304681051}
   HealthSettings:
     DeathParticle: {fileID: 789907853}
+  StarveSettings:
+    StarveDecrease: 2.5
+    HealthDecrease: 5
 --- !u!1 &1235720641
 GameObject:
   m_ObjectHideFlags: 0

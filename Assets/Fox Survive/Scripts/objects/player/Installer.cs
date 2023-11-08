@@ -13,10 +13,14 @@ namespace Player
         public JumpHandler.Settings JumpSettings;
         public OnGroundState.Settings OnGroundSettings;
         public HealthHandler.Settings HealthSettings;
+        public StarveHandler.Settings StarveSettings;
 
         public override void InstallBindings()
         {
-            Container.BindInstances(Player, MovementSettings, JumpSettings, OnGroundSettings, HealthSettings);
+            Container.BindInstances(
+                Player, MovementSettings, JumpSettings, 
+                OnGroundSettings, HealthSettings, StarveSettings
+                );
 
             Container.BindInterfacesAndSelfTo<InputState>().AsSingle();
 
@@ -29,6 +33,7 @@ namespace Player
             Container.BindInterfacesAndSelfTo<MovementHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<JumpHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<HealthHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<StarveHandler>().AsSingle();
         }
     }
 }

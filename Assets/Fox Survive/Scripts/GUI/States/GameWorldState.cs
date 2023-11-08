@@ -13,6 +13,10 @@ namespace GUI
         private IStatesContainer _container;
         private Settings _settings;
 
+        private bool _playerDied = false;
+        private Vector3 _healthBarScale;
+        private Vector3 _starveBarScale;
+
         public GameWorldState(Facade player, IStatesContainer statesContainer, Settings settings)
         {
             _player = player;
@@ -20,13 +24,12 @@ namespace GUI
             _settings = settings;
         }
 
-        private bool _playerDied = false;
-
         public void Enter()
         {
             _player.OnDie += OnPlayerDie;
             _playerDied = false;
             _healthBarScale = _settings.HealthBar.localScale;
+            _starveBarScale = _settings.StarveBar.localScale;
         }
 
         public void Exit()
@@ -38,12 +41,15 @@ namespace GUI
             _playerDied = true;
         }
 
-        private Vector3 _healthBarScale;
+        
 
         public void Tick()
         {
-            _healthBarScale.x = _player.Health / 100;
+            _healthBarScale.x = _player.Health / _settings.BarsBaseValue;
             _settings.HealthBar.localScale = _healthBarScale;
+
+            _starveBarScale.x = _player.Starve / _settings.BarsBaseValue;
+            _settings.StarveBar.localScale = _starveBarScale;
         }
 
         public IState GetNextState()
@@ -59,12 +65,13 @@ namespace GUI
         [Serializable]
         public class Settings
         {
-            //[Tooltip("Scale for health parameter to equal a rect transform width.")]
-            //public float UIScale;
+            public float BarsBaseValue = 100;
 
             public RectTransform HealthBar;
             public RectTransform HealthBarBackground;
 
+            public RectTransform StarveBar;
+            public RectTransform StarveBarBackground;
         }
     }
 }
