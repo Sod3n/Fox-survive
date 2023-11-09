@@ -23,7 +23,12 @@ namespace Player
 
         public void Heal(float value)
         {
-            _model.Health += value; 
+            _model.Health += value;
+
+            if (_model.Health > _model.MaxHealth)
+            {
+                _model.Health = _model.MaxHealth;
+            }
         }
 
         public void Damage(float value)
@@ -33,6 +38,11 @@ namespace Player
         public void Feed(float value)
         {
             _model.Starve += value;
+
+            if (_model.Starve > _model.MaxStarve)
+            {
+                _model.Starve = _model.MaxStarve;
+            }
         }
         public void Respawn()
         {
