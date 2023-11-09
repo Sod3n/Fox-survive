@@ -6,9 +6,10 @@ namespace Interactables
 {
     public class Healing : MonoBehaviour, Player.IInteractable
     {
+        [SerializeField] private float _healValue;
         public void Interact(Player.Facade facade)
         {
-            facade.Damage(10);
+            facade.Heal(_healValue);
         }
     }
 }
