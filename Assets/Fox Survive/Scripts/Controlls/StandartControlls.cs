@@ -64,7 +64,7 @@ public partial class @StandartControlls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""CameraDistanceDelta"",
+                    ""name"": ""CameraDistanceScaleDelta"",
                     ""type"": ""Value"",
                     ""id"": ""1104fea8-7524-4efe-ba1b-f16503a82d67"",
                     ""expectedControlType"": ""Axis"",
@@ -189,9 +189,9 @@ public partial class @StandartControlls: IInputActionCollection2, IDisposable
                     ""id"": ""7b78f4e8-1a71-43f0-8636-69692b89a147"",
                     ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
-                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""processors"": ""Clamp(min=-1,max=1),Invert"",
                     ""groups"": """",
-                    ""action"": ""CameraDistanceDelta"",
+                    ""action"": ""CameraDistanceScaleDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -245,7 +245,7 @@ public partial class @StandartControlls: IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_CameraPositionDelta = m_Gameplay.FindAction("CameraPositionDelta", throwIfNotFound: true);
-        m_Gameplay_CameraDistanceDelta = m_Gameplay.FindAction("CameraDistanceDelta", throwIfNotFound: true);
+        m_Gameplay_CameraDistanceScaleDelta = m_Gameplay.FindAction("CameraDistanceScaleDelta", throwIfNotFound: true);
         // GUI
         m_GUI = asset.FindActionMap("GUI", throwIfNotFound: true);
         m_GUI_AnyButton = m_GUI.FindAction("AnyButton", throwIfNotFound: true);
@@ -314,7 +314,7 @@ public partial class @StandartControlls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_CameraPositionDelta;
-    private readonly InputAction m_Gameplay_CameraDistanceDelta;
+    private readonly InputAction m_Gameplay_CameraDistanceScaleDelta;
     public struct GameplayActions
     {
         private @StandartControlls m_Wrapper;
@@ -323,7 +323,7 @@ public partial class @StandartControlls: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @CameraPositionDelta => m_Wrapper.m_Gameplay_CameraPositionDelta;
-        public InputAction @CameraDistanceDelta => m_Wrapper.m_Gameplay_CameraDistanceDelta;
+        public InputAction @CameraDistanceScaleDelta => m_Wrapper.m_Gameplay_CameraDistanceScaleDelta;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -345,9 +345,9 @@ public partial class @StandartControlls: IInputActionCollection2, IDisposable
             @CameraPositionDelta.started += instance.OnCameraPositionDelta;
             @CameraPositionDelta.performed += instance.OnCameraPositionDelta;
             @CameraPositionDelta.canceled += instance.OnCameraPositionDelta;
-            @CameraDistanceDelta.started += instance.OnCameraDistanceDelta;
-            @CameraDistanceDelta.performed += instance.OnCameraDistanceDelta;
-            @CameraDistanceDelta.canceled += instance.OnCameraDistanceDelta;
+            @CameraDistanceScaleDelta.started += instance.OnCameraDistanceScaleDelta;
+            @CameraDistanceScaleDelta.performed += instance.OnCameraDistanceScaleDelta;
+            @CameraDistanceScaleDelta.canceled += instance.OnCameraDistanceScaleDelta;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -364,9 +364,9 @@ public partial class @StandartControlls: IInputActionCollection2, IDisposable
             @CameraPositionDelta.started -= instance.OnCameraPositionDelta;
             @CameraPositionDelta.performed -= instance.OnCameraPositionDelta;
             @CameraPositionDelta.canceled -= instance.OnCameraPositionDelta;
-            @CameraDistanceDelta.started -= instance.OnCameraDistanceDelta;
-            @CameraDistanceDelta.performed -= instance.OnCameraDistanceDelta;
-            @CameraDistanceDelta.canceled -= instance.OnCameraDistanceDelta;
+            @CameraDistanceScaleDelta.started -= instance.OnCameraDistanceScaleDelta;
+            @CameraDistanceScaleDelta.performed -= instance.OnCameraDistanceScaleDelta;
+            @CameraDistanceScaleDelta.canceled -= instance.OnCameraDistanceScaleDelta;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -436,7 +436,7 @@ public partial class @StandartControlls: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnCameraPositionDelta(InputAction.CallbackContext context);
-        void OnCameraDistanceDelta(InputAction.CallbackContext context);
+        void OnCameraDistanceScaleDelta(InputAction.CallbackContext context);
     }
     public interface IGUIActions
     {

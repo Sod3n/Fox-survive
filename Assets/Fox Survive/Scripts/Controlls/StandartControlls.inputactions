@@ -42,7 +42,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "CameraDistanceDelta",
+                    "name": "CameraDistanceScaleDelta",
                     "type": "Value",
                     "id": "1104fea8-7524-4efe-ba1b-f16503a82d67",
                     "expectedControlType": "Axis",
@@ -167,9 +167,9 @@
                     "id": "7b78f4e8-1a71-43f0-8636-69692b89a147",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",
-                    "processors": "Clamp(min=-1,max=1)",
+                    "processors": "Clamp(min=-1,max=1),Invert",
                     "groups": "",
-                    "action": "CameraDistanceDelta",
+                    "action": "CameraDistanceScaleDelta",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

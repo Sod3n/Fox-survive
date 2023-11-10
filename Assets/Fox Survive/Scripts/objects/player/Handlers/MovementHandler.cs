@@ -43,6 +43,7 @@ namespace Player
 
             _player.Rigidbody.MovePosition(_player.Rigidbody.position +
                 _relativeSpeed * _relativeDirection * Time.deltaTime);
+
         }
 
         private void CalculateRelativeDirection()

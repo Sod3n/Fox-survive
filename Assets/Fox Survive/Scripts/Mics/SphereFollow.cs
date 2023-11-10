@@ -29,9 +29,6 @@ public class SphereFollow : MonoBehaviour
 
     private void Update()
     {
-        _positionDelta += _controls.Gameplay.CameraPositionDelta.ReadValue<Vector2>();
-        _distanceDelta += _controls.Gameplay.CameraDistanceDelta.ReadValue<float>();
-        Debug.Log(_distanceDelta);
     }
 
     private void FixedUpdate()

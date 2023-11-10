@@ -6628,17 +6628,17 @@ PrefabInstance:
     - target: {fileID: 3933864500106273143, guid: a81cdfd2e1cd86141be6a3bb525288c2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.65238935
+      value: 0.9961947
       objectReference: {fileID: 0}
     - target: {fileID: 3933864500106273143, guid: a81cdfd2e1cd86141be6a3bb525288c2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.08715578
       objectReference: {fileID: 0}
     - target: {fileID: 3933864500106273143, guid: a81cdfd2e1cd86141be6a3bb525288c2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.757884
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3933864500106273143, guid: a81cdfd2e1cd86141be6a3bb525288c2,
         type: 3}
@@ -6648,12 +6648,12 @@ PrefabInstance:
     - target: {fileID: 3933864500106273143, guid: a81cdfd2e1cd86141be6a3bb525288c2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3933864500106273143, guid: a81cdfd2e1cd86141be6a3bb525288c2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 179.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3933864500106273143, guid: a81cdfd2e1cd86141be6a3bb525288c2,
         type: 3}
@@ -6832,7 +6832,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3933864500106273138, guid: a81cdfd2e1cd86141be6a3bb525288c2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 658298678}
+      addedObject: {fileID: 658298684}
+    - targetCorrespondingSourceObject: {fileID: 3933864500106273138, guid: a81cdfd2e1cd86141be6a3bb525288c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 658298683}
     - targetCorrespondingSourceObject: {fileID: 3933864500818155047, guid: a81cdfd2e1cd86141be6a3bb525288c2,
         type: 3}
       insertIndex: -1
@@ -6850,29 +6854,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 658298675}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &658298678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658298676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ab2541b842e7c4e88bf49d6096f050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _settings:
-    LookAt: {fileID: 123909539}
-    Sensitivity: 0
-    WheelSensitivity: 0
-    RevereseX: 0
-    RevereseY: 0
-    Speed: 0
-    YMinAngle: 0
-    YMaxAngle: 0
-    DistanceMin: 1
-    DistanceMax: 10
 --- !u!114 &658298679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6893,6 +6874,54 @@ MonoBehaviour:
   yellowColor: {r: 0, g: 0, b: 0, a: 0}
   speedOfLightChange: 0.001
   cloudsMaterial: {fileID: 0}
+--- !u!4 &658298682 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3933864500106273143, guid: a81cdfd2e1cd86141be6a3bb525288c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 658298675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &658298683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658298676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 658298684}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &658298684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658298676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b9350cb5ade3c4b93530d32f7c04a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model:
+    Transform: {fileID: 658298682}
+    Target: {fileID: 123909539}
+    DistanceToTarget: 0
+  DistanceScaleSettings:
+    Sensetivity: 0.1
+    MaxDistance: 4
+    MinDistance: 1.5
+  RotationScales:
+    Sensitivity: {x: 100, y: 70}
+    MinAngle: 10
+    MaxAngle: 80
 --- !u!1 &661518034
 GameObject:
   m_ObjectHideFlags: 0
